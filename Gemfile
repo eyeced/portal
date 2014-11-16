@@ -37,6 +37,8 @@ gem 'rspec-rails', :group => [:test, :development]
 
 gem 'geocoder'
 
+gem 'bootstrap-sass'
+
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
