@@ -14,6 +14,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task.user_id = params[:user_id] if params[:user_id]
     respond_with(@task)
   end
 

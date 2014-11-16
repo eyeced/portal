@@ -7,8 +7,9 @@
 
 <p>
   <strong>Task:</strong>
-  <%= @task_comment.task %>
+  <%= @task_comment.task.name %>
 </p>
+
 
 <%= link_to 'Edit', edit_task_comment_path(@task_comment) %> |
 <%= link_to 'Back', task_comments_path %>

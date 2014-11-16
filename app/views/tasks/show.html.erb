@@ -7,7 +7,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @task.user_id %>
+  <%= @task.user.name %>
 </p>
 
 <p>
@@ -15,5 +15,8 @@
   <%= @task.comment %>
 </p>
 
+<%= render partial: 'task_comments/task_comments', locals: {  task_comments: @task.task_comments } %>
+<br />
 <%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Add Comments', new_task_comment_path(task_id: @task.id) %> |
 <%= link_to 'Back', tasks_path %>

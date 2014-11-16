@@ -30,10 +30,12 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
 gem 'cancancan'
-
+gem 'gmaps4rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'rspec-rails', :group => [:test, :development]
+
+gem 'geocoder'
 
 group :test do
   gem 'factory_girl_rails'
