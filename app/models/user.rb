@@ -7,14 +7,15 @@ class User < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
-  validates_presence_of :username
-  validates_uniqueness_of :username
+  validates_presence_of :username, :name
+  validates_uniqueness_of :username, :name
 
   def self.from_omniauth(auth)
     where(provider: auth["provider"], uid: auth["uid"]).first_or_create do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.username = auth["info"]["nickname"]
+      user.name = auth["info"]["name"]
       user.save
     end
   end

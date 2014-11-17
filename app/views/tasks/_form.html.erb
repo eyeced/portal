@@ -1,26 +1,31 @@
-<%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="panel panel-default" style="width: 370px;">
+  <div class="panel-heading"><%= form_title %></div>
+  <div class="panel-body">
+    <%= form_for(@task) do |f| %>
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+          <ul>
+          <% @task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    
+      <div class="input-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <%= f.hidden_field :user_id %>
+      <div class="input-group">
+        <%= f.label "Description" %>
+        <%= f.text_area :comment, class: "form-control" %>
+      </div>
+      <br/>
+      <div class="actions">
+        <%= f.submit "Create Task", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <%= f.hidden_field :user_id %>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

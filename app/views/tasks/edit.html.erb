@@ -1,6 +1,4 @@
-<h1>Editing task</h1>
-
-<%= render 'form' %>
+<%= render partial: 'form', locals: { form_title: "Edit Task" } %>
 
 <%= link_to 'Show', @task %> |
 <%= link_to 'Back', tasks_path %>

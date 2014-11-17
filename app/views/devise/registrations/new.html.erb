@@ -1,54 +1,80 @@
-<h2>Sign up</h2>
-
-<p>Login using the following services</p>
-<div class="auth_providers">
-  <a href="/users/auth/twitter" class="auth_provider">
-    <%= image_tag "twitter_64.png", size: "64x64", alt: "Twitter" %>
-    Twitter
-  </a>
-  <a href="/users/auth/facebook" class="auth_provider">
-    <%= image_tag "facebook_64.png", size: "64x64", alt: "Facebook" %>
-    Facebook
-  </a>
-  <a href="/users/auth/google_apps" class="auth_provider">
-    <%= image_tag "google_apps_64.png", size: "64x64", alt: "Google" %>
-    Google
-  </a>
+<div class="panel panel-default" style="width: 370px;">
+  <div class="panel-heading">Sign Up</div>
+  <div class="panel-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="input-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+      <br/>
+      <div class="input-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+      <br/>
+      <div class="input-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, autofocus: true, class: "form-control" %>
+      </div>
+      <br/>
+      <% if f.object.password_required? %>
+        <div class="input-group">
+          <%= f.label :password %>
+          <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+      <br/>
+        <div class="input-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+      <% end %>
+      <br/>
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<h4>or</h4>
+<div class="panel panel-default" style="width: 370px;">
+  <div class="panel-heading">Login using following services</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href="/users/auth/twitter" class="auth_provider">
+            <%= image_tag "twitter_64.png", size: "64x64", alt: "Twitter" %>
+          </a>
+          <div class="caption center">
+            <strong>Twitter</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href="/users/auth/facebook" class="auth_provider">
+            <%= image_tag "facebook_64.png", size: "64x64", alt: "Facebook" %>
+          </a>
+          <div class="caption center">
+            <strong>Facebook</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href="/users/auth/google_apps" class="auth_provider">
+            <%= image_tag "google_apps_64.png", size: "64x64", alt: "Google" %>
+          </a>
+          <div class="caption center">
+            <strong>Google</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h4>OR</h4>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
-
-  <% if f.object.password_required? %>
-    <div class="field">
-      <%= f.label :password %>
-      <% if @validatable %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

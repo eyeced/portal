@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   get 'users/index'
 
+  get 'task_comments/comments_for_task', path_name: "comments_for_task"
+
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   root to: 'static_pages#home'

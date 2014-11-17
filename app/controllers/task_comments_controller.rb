@@ -1,10 +1,15 @@
 class TaskCommentsController < ApplicationController
   before_action :set_task_comment, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @task_comments = TaskComment.all
+    respond_with(@task_comments)
+  end
+
+  def comments_for_task
+    @task_comments = TaskComment.where(task_id: params[:task_id]) if params[:task_id]
     respond_with(@task_comments)
   end
 
