@@ -1,22 +1,11 @@
-<%= form_for(@task_comment) do |f| %>
-  <% if @task_comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task_comment.errors.count, "error") %> prohibited this task_comment from being saved:</h2>
-
-      <ul>
-      <% @task_comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+<%= form_for(@task_comment, remote: true) do |f| %>
+  <div class="input-group">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
   </div>
     <%= f.hidden_field :task_id %>
+    <%= f.hidden_field :added_by_id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Comment", class: "btn btn-primary" %>
   </div>
 <% end %>

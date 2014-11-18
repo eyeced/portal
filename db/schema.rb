@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115175538) do
+ActiveRecord::Schema.define(version: 20141118155542) do
 
   create_table "task_comments", force: true do |t|
     t.string   "comment"
     t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "added_by_id"
   end
 
   add_index "task_comments", ["task_id"], name: "index_task_comments_on_task_id", using: :btree
@@ -43,10 +44,10 @@ ActiveRecord::Schema.define(version: 20141115175538) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
     t.string   "username"
     t.string   "name"
+    t.string   "uid"
+    t.string   "provider"
     t.float    "latitude",               limit: 24
     t.float    "longitude",              limit: 24
     t.string   "address"

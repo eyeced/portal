@@ -20,6 +20,7 @@ class TaskCommentsController < ApplicationController
   def new
     @task_comment = TaskComment.new
     @task_comment.task_id = params[:task_id] if params[:task_id]
+    @task_comment.added_by_id = current_user.id
     respond_with(@task_comment)
   end
 
