@@ -8,6 +8,13 @@ class TasksController < ApplicationController
     respond_with(@tasks)
   end
 
+  def assigned
+    @tasks = Task.where(user_id: current_user.id)
+    respond_with(@tasks) do |format|
+      format.html { render :index }
+    end
+  end
+
   def show
     respond_with(@task)
   end

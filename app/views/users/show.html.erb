@@ -1,0 +1,24 @@
+<div class="panel panel-default" style="width: 600px;">
+  <div class="panel-heading">User Details</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <ul class="list-group">
+          <li class="list-group-item right">Name</li>
+          <li class="list-group-item">Username</li>
+          <li class="list-group-item">Address</li>
+          <li class="list-group-item">Role</li>
+        </ul>
+      </div>
+      <div class="col-sm-8">
+        <ul class="list-group">
+          <li class="list-group-item"><%= @user.name %></li>
+          <li class="list-group-item"><%= @user.username %></li>
+          <li class="list-group-item"><%= @user.address %></li>
+          <li class="list-group-item"><%= @user.role.titleize %></li>
+        </ul>
+      </div>
+    </div>
+    <%= render partial: 'links', locals: { user: @user }%>
+  </div>
+</div>

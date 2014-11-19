@@ -33,6 +33,7 @@
         </div>
       <% end %>
       <br/>
+        <%= f.hidden_field :role, value: User.ROLES.last %>
       <div class="actions">
         <%= f.submit "Sign up", class: "btn btn-primary" %>
       </div>

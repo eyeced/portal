@@ -10,14 +10,29 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :name
   validates_uniqueness_of :username, :name
 
+  ROLES = %w[admin manager executive data_manager]
+
   def self.from_omniauth(auth)
     where(provider: auth["provider"], uid: auth["uid"]).first_or_create do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.username = auth["info"]["nickname"]
       user.name = auth["info"]["name"]
+      if (User.count == 0)
+        user.role = ROLES.first
+      else
+        user.role = ROLES.last
+      end
       user.save
     end
+  end
+
+  def admin?
+    self.role == "admin"
+  end
+
+  def manager?
+    role == "manager"
   end
 
   def self.new_with_session(params, session)
@@ -33,6 +48,18 @@ class User < ActiveRecord::Base
 
   def password_required?
     super && provider.blank?
+  end
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super
+    end
   end
 
   def update_with_password(params, *options)

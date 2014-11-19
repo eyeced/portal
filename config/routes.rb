@@ -3,15 +3,21 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  get 'tasks/assigned', to: 'tasks#assigned', as: 'tasks_assigned'
   get 'static_pages/home'
 
   get 'static_pages/index'
   
   get 'users/index'
 
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  get 'users/:id', to: 'users#show'
+  get 'users/:id/edit', to: 'users#edit', as: "edit_user"
+  put 'users/:id', to: 'users#update'
+  delete 'users/:id', to: 'users#delete'
+
   get 'task_comments/comments_for_task', path_name: "comments_for_task"
 
-  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   root to: 'static_pages#home'
 

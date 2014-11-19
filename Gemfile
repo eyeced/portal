@@ -39,6 +39,8 @@ gem 'geocoder'
 
 gem 'bootstrap-sass'
 
+gem 'bootstrap-select-rails'
+
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'

@@ -1,0 +1,45 @@
+<div class="panel panel-default" style="width: 370px;">
+  <div class="panel-heading">Edit User</div>
+  <div class="panel-body">
+    <%= form_for(@user) do |f| %>
+      <div class="input-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+      <br/>
+      <div class="input-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+      <br/>
+      <div class="input-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, autofocus: true, class: "form-control" %>
+      </div>
+      <br/>
+      <% if f.object.password_required? %>
+        <div class="input-group">
+          <%= f.label :password %>
+          <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+      <br/>
+        <div class="input-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+      <% end %>
+      <div class="input-group">
+        <%= f.label :role %>
+        <%= f.collection_select :role, User::ROLES, :to_s, :titleize, {}, { class: "form-control selectpicker" } %>
+      </div>
+      <br/>
+      <div class="actions">
+        <%= f.submit "Save Changes", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

@@ -31,6 +31,7 @@ GEM
     bcrypt (3.1.9)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
+    bootstrap-select-rails (1.6.2)
     builder (3.2.2)
     cancancan (1.9.2)
     capybara (2.4.4)
@@ -227,6 +228,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap-select-rails
   cancancan
   capybara
   coffee-rails (~> 4.0.0)

@@ -4,7 +4,11 @@ class TaskCommentsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @task_comments = TaskComment.all
+    if params[:task_id]
+      @task_comments = TaskComment.where(task_id: params[:task_id]) if params[:task_id]
+    else
+      @task_comments = TaskComment.all
+    end
     respond_with(@task_comments)
   end
 
