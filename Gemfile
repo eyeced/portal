@@ -43,6 +43,8 @@ gem 'bootstrap-select-rails'
 
 gem 'faker'
 
+gem 'chartkick'
+
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'

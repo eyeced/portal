@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
   get 'users/index'
 
+  get 'static_pages/report', as: 'report'
+
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   get 'users/:id', to: 'users#show'
   get 'users/:id/edit', to: 'users#edit', as: "edit_user"

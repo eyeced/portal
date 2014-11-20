@@ -6,6 +6,7 @@
     <% if current_user.manager?  %>
       <%= link_to "View All Users", users_index_path, class: "btn btn-primary btn-lg", role: "button" %>
       <%= link_to "View All Tasks", tasks_path, class: "btn btn-primary btn-lg", role: "button" %>
+      <%= link_to "Task Report", report_path, class: "btn btn-primary btn-lg", role: "button" %>
     <% else %>
       <%= link_to "My Tasks", tasks_assigned_path, class: "btn btn-primary btn-lg", role: "button" %>
     <% end %>

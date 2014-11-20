@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     role == "executive"
   end
 
+  def data_manager?
+    role == "data_manager"
+  end
+
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
