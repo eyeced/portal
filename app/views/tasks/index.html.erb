@@ -16,9 +16,9 @@
           <td><%= task.name %></td>
           <td><%= task.user.name %></td>
           <td>
-            <%= link_to 'Show', task, class: "btn btn-default btn-sm" %>
-            <%= link_to 'Edit', edit_task_path(task), class: "btn btn-default btn-sm"  %>
-            <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm"  %>
+            <%= link_to 'Show', task, remote: true, class: "btn btn-default btn-sm" %>
+            <%= link_to 'Edit', edit_task_path(task), class: "btn btn-default btn-sm", remote: true if current_user.executive?  %>
+            <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" if current_user.manager?  %>
           </td>
           <td>
             <%= link_to 'View All', task_comments_path(task_id: task.id), class: "btn btn-default btn-sm", remote: true %>
@@ -31,34 +31,8 @@
 
 </div>
 
-<div class="modal fade" id="new_task_comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">New Task Comment</h4>
-      </div>
-      <div class="modal-body" id="new_task_comment_body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="task_comments" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Comments</h4>
-      </div>
-      <div class="modal-body" id="task_comment_body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: 'common/modal', locals: { id: 'new_task_comment', title: 'New Task Comment' }%>
+<%= render partial: 'common/modal', locals: { id: 'task_comments', title: 'Comments' }%>
+<%= render partial: 'common/modal', locals: { id: 'update_task_status', title: 'Update Task Status' }%>
+<%= render partial: 'common/modal', locals: { id: 'show_task', title: 'Task Details' }%>
+<%= render partial: 'common/modal', locals: { id: 'edit_task', title: 'Edit Task' }%>

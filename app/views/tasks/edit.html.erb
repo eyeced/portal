@@ -1,4 +1,15 @@
-<%= render partial: 'form', locals: { form_title: "Edit Task" } %>
-
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<div class="panel panel-default" style="width: 370px;">
+  <div class="panel-heading">Update Task Status</div>
+  <div class="panel-body">
+    <%= form_for(@task) do |f| %>
+      <div class="input-group">
+        <%= f.label :status %>
+        <%= f.collection_select :status, Task::STATUS, :to_s, :titleize, {}, { class: "form-control" }%>
+      </div>
+      <br/>
+      <div class="actions">
+        <%= f.submit "Save Changes", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

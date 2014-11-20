@@ -5,7 +5,7 @@
   <ul class="list-group">
     <%- @users.each do |user| %>
       <li class="list-group-item"><%= user.name %><span class="pull-right">
-        <%= link_to "Assign Task", new_task_path(user_id: user.id), class: "btn btn-primary btn-sm" if current.user.manager? %>
+        <%= link_to "Assign Task", new_task_path(user_id: user.id), class: "btn btn-primary btn-sm" if current_user.data_manager? %>
         <%= render  partial: 'links', locals: { user: user }%>
       </span>
       </li>

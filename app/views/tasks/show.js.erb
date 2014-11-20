@@ -1,0 +1,2 @@
+$("#show_task_body").html("<%= escape_javascript(render partial: 'tasks/view', locals: { task: @task }) %>")
+$("#show_task").modal("show")

@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    if current_user.manager?
+      @users = User.all
+    else current_user.role == "data_manager"
+      @users = User.where(role: "executive")
+    end
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
@@ -35,6 +39,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :username, :password, :password_confirmation, :role)
+      params.require(:user).permit(:name, :username, :password, :password_confirmation, :role, :approved)
     end
 end

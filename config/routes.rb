@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :task_comments
 
+  get 'tasks/assigned', to: 'tasks#assigned', as: 'tasks_assigned'
   resources :tasks
 
-  get 'tasks/assigned', to: 'tasks#assigned', as: 'tasks_assigned'
   get 'static_pages/home'
 
   get 'static_pages/index'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show'
   get 'users/:id/edit', to: 'users#edit', as: "edit_user"
   put 'users/:id', to: 'users#update'
-  delete 'users/:id', to: 'users#delete'
+  delete 'users/:id', to: 'users#delete', as: "user_delete"
 
   get 'task_comments/comments_for_task', path_name: "comments_for_task"
 

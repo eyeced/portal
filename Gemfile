@@ -41,6 +41,8 @@ gem 'bootstrap-sass'
 
 gem 'bootstrap-select-rails'
 
+gem 'faker'
+
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'

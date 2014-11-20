@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119081106) do
+ActiveRecord::Schema.define(version: 20141119140621) do
 
   create_table "task_comments", force: true do |t|
     t.string   "comment"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20141119081106) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",     default: "assigned"
   end
 
   create_table "users", force: true do |t|
@@ -44,10 +45,10 @@ ActiveRecord::Schema.define(version: 20141119081106) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
     t.string   "username"
     t.string   "name"
+    t.string   "uid"
+    t.string   "provider"
     t.float    "latitude",               limit: 24
     t.float    "longitude",              limit: 24
     t.string   "address"

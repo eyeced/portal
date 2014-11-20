@@ -1,22 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @task.user.name %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @task.comment %>
-</p>
-
-<%= render partial: 'task_comments/task_comments', locals: {  task_comments: @task.task_comments } %>
-<br />
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Add Comments', new_task_comment_path(task_id: @task.id) %> |
-<%= link_to 'Back', tasks_path %>
+<div class="panel panel-default" style="width: 500px;">
+  <div class="panel-heading">Task Details</div>
+  <div class="panel-body">
+    <%= render partial: 'tasks/view', locals: { task: @task } %>
+  </div>
+</div>

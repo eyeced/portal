@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @tasks = Task.all
@@ -50,6 +50,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :user_id, :comment)
+      params.require(:task).permit(:name, :user_id, :comment, :status)
     end
 end

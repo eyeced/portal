@@ -33,7 +33,8 @@
         </div>
       <% end %>
       <br/>
-        <%= f.hidden_field :role, value: User.ROLES.last %>
+        <%= f.hidden_field :role, value: User::ROLES.last %>
+        <%= f.hidden_field :approved, value: true %>
       <div class="actions">
         <%= f.submit "Sign up", class: "btn btn-primary" %>
       </div>

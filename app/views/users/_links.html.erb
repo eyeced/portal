@@ -2,5 +2,5 @@
   <%= link_to "Edit", edit_user_path(user), class: "btn btn-primary btn-sm" %>  
 <% end %>
 <% if current_user.admin? or current_user.manager? %>
-  <%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary btn-sm" %>
+  <%= link_to "Delete", user_delete_path(user.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary btn-sm" %>
 <% end %>

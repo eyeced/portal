@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
       else
         user.role = ROLES.last
       end
+      user.approved = true
       user.save
     end
   end
@@ -32,7 +33,11 @@ class User < ActiveRecord::Base
   end
 
   def manager?
-    role == "manager"
+    role == "manager" or role == "admin"
+  end
+
+  def executive?
+    role == "executive"
   end
 
   def self.new_with_session(params, session)

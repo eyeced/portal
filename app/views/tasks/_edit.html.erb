@@ -1,0 +1,9 @@
+<%= form_for(@task, remote: true) do |f| %>
+  <div class="input-group">
+    <%= f.label :status %>
+    <%= f.collection_select :status, Task::STATUS, :to_s, :titleize, {}, { class: "form-control" }%>
+  </div><br/>
+  <div class="actions">
+    <%= f.submit "Save Changes", class: "btn btn-primary" %>
+  </div>
+<% end %>
